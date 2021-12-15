@@ -11,7 +11,7 @@ const EditTask = ({ tasks }) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [input, setInput] = useState({ id: tasks.id })
+    const [input, setInput] = useState({ id: tasks.id, dec: tasks.dec, title: tasks.title })
     const dispatch = useDispatch()
     const handleChange = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value })
@@ -24,12 +24,12 @@ const EditTask = ({ tasks }) => {
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>
-                        <input type='text' name='title' onChange={handleChange} placeholder={tasks.title} ></input>
+                        <input type='text' name='title' value={input.title} onChange={handleChange} placeholder={tasks.title} ></input>
                         <i className="far fa-check-circle icone_done" name="isDone" onClick={() => setisDone(!isDone)} style={{ color: isDone ? "green" : "red" }} ></i>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <input type='text' placeholder={tasks.dec} name='dec' onChange={handleChange} />
+                    <input type='text' placeholder={tasks.dec} name='dec' value={input.dec} onChange={handleChange} />
                 </Modal.Body>
 
                 <Modal.Footer>
