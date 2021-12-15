@@ -1,23 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
 
+import { Route, Routes } from 'react-router';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ListTask from './components/ListTask';
+import AddTask from './components/AddTask';
+import FiltreTask from './components/FiltreTask';
+import { useState } from 'react';
+
 function App() {
+  const [doneType, setDoneType] = useState('')
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <center>
+          <h1 style={{padding:'50px'}}>My Tasks List </h1>
+       </center>
+      
+      <Routes>
+        
+        <Route path='/' element={<ListTask/>} ></Route>
+        <Route path='/Task_type' element={<FiltreTask doneType={doneType} />} ></Route>
+       
+
+      </Routes>
+
     </div>
   );
 }
